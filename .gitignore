@@ -1,0 +1,4 @@
+.idea
+gitlab/config/**
+gitlab/data/**
+gitlab/logs/**

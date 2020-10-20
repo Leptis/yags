@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+  gitlab-ce:
+    image: gitlab/gitlab-ce:latest
+    restart: always
+    volumes:
+    - ./gitlab/config:/etc/gitlab
+    - ./gitlab/logs:/var/log/gitlab
+    - ./gitlab/data:/var/opt/gitlab
+    expose:
+      - "443"
+      - "80"
+      - "22"
+    networks:
+      default:
+        ipv4_address: 192.168.101.10
+
+networks:
+  default:
+    driver: bridge
+    attachable: true
+    ipam:
+      config:
+        - subnet: 192.168.101.0/24
+          gateway: 192.168.101.1
